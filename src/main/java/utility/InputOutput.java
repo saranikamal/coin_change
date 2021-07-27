@@ -29,8 +29,39 @@ public class InputOutput {
     }
 
     public int getInput() {
+        String validatedInput;
+        int pence;
         String line = readLine();
-        validate(line);
-        return 2;//Integer.parseInt(validate(line));
+        validatedInput = validate(line);
+        pence = preProcessingInput(validatedInput);
+        System.out.println("pence = " + pence);
+        return pence;
+    }
+
+    private int preProcessingInput(String validatedInput) {
+        double numeric;
+        int result;
+
+        if (validatedInput.charAt(validatedInput.length() - 1) == 'p')
+            /*Removing pence sign*/
+            validatedInput = validatedInput.substring(0, validatedInput.length() - 1);
+        /*Removing pound sign*/
+        if (validatedInput.charAt(0) == '£') {
+            validatedInput = validatedInput.substring(1);
+            numeric = Double.parseDouble(validatedInput) * 100;
+            result = (int) Math.round(Math.ceil(numeric));
+            return result;
+        }
+
+        if (validatedInput.contains(".")) {
+            numeric = Double.parseDouble(validatedInput) * 100;
+            result = (int) Math.round(Math.ceil(numeric));
+            return result;
+        }
+
+        /* It is just in pence */
+        result = Integer.parseInt(validatedInput);
+        return result;
+
     }
 }
