@@ -14,23 +14,23 @@ public class InputOutput {
         return scanner.nextLine();
     }
 
-    private boolean validateInput(String input){
+    private boolean validateInput(String input) {
         return inputValidator.isInputValid(input);
     }
 
     public String validate(String line) {
         boolean valid = validateInput(line);
-        if(valid)
+        if (valid) {
+            System.out.println("line = " + line);
             return line;
-        return "";
+        }
+        System.out.println("Sefr");
+        return "0";
     }
 
-    public String getInput(){
-      //  validateInput(readLine());
+    public int getInput() {
         String line = readLine();
-        boolean valid = validateInput(line);
-        if(valid)
-            return line;
-        return "";
+        validate(line);
+        return 2;//Integer.parseInt(validate(line));
     }
 }
