@@ -7,7 +7,7 @@ public class CoinChange {
 
     public void runProgram() {
         while (true) {
-            inputOutput.getInput();
+            int pence = inputOutput.getInput();
         }
     }
 }
