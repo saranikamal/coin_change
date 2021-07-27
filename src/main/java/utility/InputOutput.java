@@ -18,8 +18,19 @@ public class InputOutput {
         return inputValidator.isInputValid(input);
     }
 
+    public String validate(String line) {
+        boolean valid = validateInput(line);
+        if(valid)
+            return line;
+        return "";
+    }
+
     public String getInput(){
       //  validateInput(readLine());
-        return "test";
+        String line = readLine();
+        boolean valid = validateInput(line);
+        if(valid)
+            return line;
+        return "";
     }
 }
