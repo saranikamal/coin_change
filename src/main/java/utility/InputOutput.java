@@ -1,13 +1,12 @@
 package utility;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class InputOutput {
 
     private Scanner scanner = new Scanner(System.in);
     private Validator inputValidator = new InputValidator();
-    private Algorithm greedy = new Greedy();
+
 
     /*I have to close scanner in a graceful way*/
 
@@ -23,10 +22,8 @@ public class InputOutput {
     public String validate(String line) {
         boolean valid = validateInput(line);
         if (valid) {
-            //   System.out.println("value = " + line);
             return line;
         }
-        // System.out.println("zero");
         return "0";
     }
 
@@ -63,14 +60,33 @@ public class InputOutput {
         String line = readLine();
         validatedInput = validate(line);
         pence = preProcessingInput(validatedInput);
-        System.out.println("pence = " + pence);
         return pence;
     }
 
+    private String postProcessingOutput(List<Integer> minimumCoinsList, int[] coinList) {
+        String output = "";
+        Map<Integer, Integer> coinMap = new HashMap<>();
+        for (int coin : minimumCoinsList) {
+            coinMap.put(coin, Collections.frequency(minimumCoinsList, coin));
+        }
 
-    public void showOutput() {
-        int amount = getInput();
-        List<Integer> minimumNumberOfCoins = greedy.getMinimumNumberOfCoins(amount);
-        System.out.println("minimum number of coins = " + minimumNumberOfCoins.size());
+        for (int coin : coinList) {
+            if (coinMap.containsKey(coin)) {
+                if (coin >= 100)
+                    output = String.format("%d x £%d, ", coinMap.get(coin), coin / 100) + output;
+                else
+                    output = String.format("%d x %dp, ", coinMap.get(coin), coin) + output;
+            }
+        }
+        if(!output.isEmpty())
+            output = output.substring(0, output.length() - 2);
+        else output = "0";
+
+        return output;
+    }
+
+    public void showOutput(List<Integer> minimumCoinList, int[] coinList) {
+        String output = postProcessingOutput(minimumCoinList, coinList);
+        System.out.println(output);
     }
 }
