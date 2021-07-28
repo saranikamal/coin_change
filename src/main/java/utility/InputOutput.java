@@ -24,7 +24,7 @@ public class InputOutput {
             System.out.println("line = " + line);
             return line;
         }
-        System.out.println("Sefr");
+        System.out.println("zero");
         return "0";
     }
 
@@ -45,21 +45,21 @@ public class InputOutput {
         if (validatedInput.charAt(validatedInput.length() - 1) == 'p')
             /*Removing pence sign*/
             validatedInput = validatedInput.substring(0, validatedInput.length() - 1);
-        /*Removing pound sign*/
+        /*Removing pound sign and converting its value to pence*/
         if (validatedInput.charAt(0) == '£') {
-            validatedInput = validatedInput.substring(1);
+            validatedInput = validatedInput.substring(1, validatedInput.length());
             numeric = Double.parseDouble(validatedInput) * 100;
             result = (int) Math.round(Math.ceil(numeric));
             return result;
         }
-
+        /* If it doesn't contain pound or p sign, but is decimal, convert it to pence*/
         if (validatedInput.contains(".")) {
             numeric = Double.parseDouble(validatedInput) * 100;
             result = (int) Math.round(Math.ceil(numeric));
             return result;
         }
 
-        /* It is just in pence */
+        /* It is just in pence, doesn't need conversion */
         result = Integer.parseInt(validatedInput);
         return result;
 

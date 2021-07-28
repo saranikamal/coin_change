@@ -2,33 +2,28 @@ package utility;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputOutputTest {
     InputOutput io = new InputOutput();
     String validInput;
     String invalidInput;
+    String input;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         validInput = "123p";
         invalidInput = "XX";
+        input = "£1.89p";
     }
 
-//    @org.junit.jupiter.api.AfterEach
-//    void tearDown() {
-//    }
-//
-//    @org.junit.jupiter.api.Test
-//    void getInput() {
-////        String res = io. // getInput();
-////        assertEquals("", res);
-//    }
-
     @Test
-    void ifNotValidateShouldBeEmpty() {
+    void ifNotValidateShouldBeZero() {
         String res = io.validate(invalidInput);
-        assertEquals("", res);
+        assertEquals("0", res);
     }
 
     @Test
@@ -36,4 +31,11 @@ class InputOutputTest {
         String res = io.validate(validInput);
         assertEquals(validInput, res);
     }
+
+    /*@Test
+    void correctlyPreprocessed() {
+        int res = io.preProcessingInput(validInput);
+        assertEquals(123, res);
+    }*/
+
 }
