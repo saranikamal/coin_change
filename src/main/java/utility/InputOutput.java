@@ -1,11 +1,13 @@
 package utility;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputOutput {
 
     private Scanner scanner = new Scanner(System.in);
     private Validator inputValidator = new InputValidator();
+    private Algorithm greedy = new Greedy();
 
     /*I have to close scanner in a graceful way*/
 
@@ -21,24 +23,14 @@ public class InputOutput {
     public String validate(String line) {
         boolean valid = validateInput(line);
         if (valid) {
-            System.out.println("line = " + line);
+            //   System.out.println("value = " + line);
             return line;
         }
-        System.out.println("zero");
+        // System.out.println("zero");
         return "0";
     }
 
-    public int getInput() {
-        String validatedInput;
-        int pence;
-        String line = readLine();
-        validatedInput = validate(line);
-        pence = preProcessingInput(validatedInput);
-        System.out.println("pence = " + pence);
-        return pence;
-    }
-
-    private int preProcessingInput(String validatedInput) {
+    public int preProcessingInput(String validatedInput) {
         double numeric;
         int result;
 
@@ -63,5 +55,22 @@ public class InputOutput {
         result = Integer.parseInt(validatedInput);
         return result;
 
+    }
+
+    public int getInput() {
+        String validatedInput;
+        int pence;
+        String line = readLine();
+        validatedInput = validate(line);
+        pence = preProcessingInput(validatedInput);
+        System.out.println("pence = " + pence);
+        return pence;
+    }
+
+
+    public void showOutput() {
+        int amount = getInput();
+        List<Integer> minimumNumberOfCoins = greedy.getMinimumNumberOfCoins(amount);
+        System.out.println("minimum number of coins = " + minimumNumberOfCoins.size());
     }
 }
