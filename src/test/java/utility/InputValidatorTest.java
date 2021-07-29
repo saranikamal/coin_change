@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputValidatorTest {
-      private Validator inputValidator = new InputValidator();
+      private final Validator inputValidator = new InputValidator();
 
     @Test
     void inputWithPoundSignOnly() {

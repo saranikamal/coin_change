@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputOutputTest {
-    private InputOutput io = new InputOutput();
+    private final InputOutput io = new InputOutput();
     private String validInput;
     private String invalidInput;
 
