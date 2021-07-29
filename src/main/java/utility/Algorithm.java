@@ -2,7 +2,6 @@ package utility;
 
 import java.util.List;
 
-public interface Algorithm {
-    List<Integer> getMinimumNumberOfCoins(int amount);
-    int[] getCoinList();
+public abstract class Algorithm {
+  public abstract List<Integer> getMinimumNumberOfCoins(int amount);
 }
