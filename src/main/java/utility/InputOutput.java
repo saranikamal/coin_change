@@ -10,7 +10,11 @@ public class InputOutput {
     private Scanner scanner = new Scanner(System.in);
     /*I might need to close scanner in a graceful way*/
     private final Validator inputValidator = new InputValidator();
+    private String validatedInput;
 
+    public String getValidatedInput() {
+        return validatedInput;
+    }
 
     /**
      * @return Returns the value that user has entered in the terminal.
@@ -83,7 +87,8 @@ public class InputOutput {
         int pence;
         String line = readLine();
         validatedInput = validate(line);
-        System.out.print(validatedInput + " = ");
+        /* Keeping the validated input entered by user in validatedInput attribute to access it and display it later*/
+        this.validatedInput = validatedInput;
         pence = preProcessingInput(validatedInput);
         return pence;
     }
@@ -122,6 +127,7 @@ public class InputOutput {
      */
     public void showOutput(List<Integer> minimumCoinList, int[] coinList) {
         String output = postProcessingOutput(minimumCoinList, coinList);
+        System.out.print(getValidatedInput() + " = ");
         System.out.println(output);
     }
 }
