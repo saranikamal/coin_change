@@ -59,6 +59,7 @@ public class InputOutput {
         int pence;
         String line = readLine();
         validatedInput = validate(line);
+        System.out.print(validatedInput+" = ");
         pence = preProcessingInput(validatedInput);
         return pence;
     }
