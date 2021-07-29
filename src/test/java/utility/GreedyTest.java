@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GreedyTest {
 
-    Algorithm greedy = new Greedy();
+    private Algorithm greedy = new Greedy();
 
     @Test
     void getMinimumNumberOfCoinsTestOne() {
