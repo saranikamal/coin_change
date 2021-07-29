@@ -12,11 +12,13 @@ public class CoinChange {
 
     public void runProgram() {
         int input;
+        int run = 5;
         List<Integer> minimumNumberOfCoins;
-        while (true) {
+        while (run > 0) {
             input = inputOutput.getInput();
             minimumNumberOfCoins = algo.getMinimumNumberOfCoins(input);
             inputOutput.showOutput(minimumNumberOfCoins, algo.getCoinList());
+            run--;
         }
     }
 }
