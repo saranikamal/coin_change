@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Sara
+ * Test cases to check the functionality of input validation method.
+ */
 class InputValidatorTest {
       private final Validator inputValidator = new InputValidator();
 

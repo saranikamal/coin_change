@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @author Sara
+ * Test cases to check utilities such as pre processing the user input.
+ */
 class InputOutputTest {
     private final InputOutput io = new InputOutput();
     private String validInput;
